@@ -1,18 +1,19 @@
-@ second program: c = a + b
+@second program :c=a+b
 .section .data
-a: .word 2 @32-bit variable a in memory
-b: .word 5 @ 32-bit variable b in memory
-c: .word 0 @ 32-bit variable c in memory
+a:.word 2
+b:.word 5
+c:.word 0
 .section .text
 .globl _start
-_start: 
- ldr r1, = a @load memory address of a into r1
- ldr r1,[r1] @load the value a into r1
- ldr r2, = b @load memory address of b into r2
- ldr r2,[r2] @load the value b into r2
- add r1,r1,r2 @ add r1 to r2 and store into r1
- ldr r2, = c @load memory address of c into r2
- str r1,[r2] @store r1 into memory c
- mov r7,#1 @ program termination exit syscall
- svc #0 @ program termination:wake kernel
+_start:
+ldr r1,=a
+ldr r1,[r1]
+ldr r2,=b
+ldr r2,[r2]
+add r1,r1,r2
+ldr r2,=c
+str r1,[r2]
+
+mov r7,#1
+svc #0
 .end
